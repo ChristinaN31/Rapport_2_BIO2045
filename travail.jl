@@ -15,17 +15,25 @@
 # # Introduction
 
 # # Présentation du modèle
+# ## États du modèle:
+# Le modèle est composé de 200 parcelles pouvant se trouver dans quatre états possibles: vide, herbes, buissons de type A et buissons de type B. Ces états représentent différents niveaux de végétation
+# sous une ligne électrique, où la présence de végétation doit être contrôlée pour assurer la sécurité de l'infrastructure tout en maintenant un certain niveau de biodiversité.
+# ## Population initiale
+# Au début de la simulation, le modèle contient 200 parcelles. Parmi celle-ci, 150 sont vides, aucune parcelle n'est occupée par des herbes et 50 parcelles sont occupées par des buissons (35 de type A et 15 de type B). 
+# Cela représente l'état initial du modèle après l'intervention humaine.
+s = [150, 0, 35, 15] # rappel qu'à l'équilibre, seulement 20% des parcelles sont végétalisées
+# ## Transitions écologiques
+# L'évolution du paysage est modélisée à l'aide d'une matrice de transition. Cette matrice décrit la probabilité qu'une parcelle passe d'un état à un autre entre deux générations. Par exemple, une parcelle
+# vide peut rester vide ou peut devenir une parcelle d'herbes ou de buissons. 
 
 # # Implémentation
-
-# ## Packages nécessaires
-
+# ## Packages nécessaires 
 import Random
 Random.seed!(123456)
 using CairoMakie
 using Distributions
 
-# ## Une autre section
+# ## Vérifications des entrées du modèle
 """
     check_transition_matrix!(T)
 
@@ -54,6 +62,7 @@ function check_function_arguments(transitions, states)
     return nothing
 end
 
+# ## Fonctions de simulation
 """
     _sim_stochastic!(timeseries, transitions, generation)
 
@@ -76,6 +85,7 @@ function _sim_deterministe!(timeseries, transitions, generation)
     timeseries[:, generation+1] .+= pop_change
 end
 
+# ## Fonction principale
 """
     simulation(transitions, states)
 
@@ -97,9 +107,40 @@ function simulation(transitions, states; generations = 500, stochastic = false)
     return timeseries
 end
 
+# ## Paramètres du modèle
+# Il y a 4 états du paysage: vide, herbes, buisson_A, buisson_B
+# Il y a 200 parcelles, toutes initiallement vides mais on peut planter jusqu'à 50 parcelles de buissons
+# on va donc planter 35 parcelles de buisson_A et 15 parcelles de buisson_B
+# alors il y a 150 vides, 0 herbes, 35 buissons_A et 15 buissons_B
+
+# États initiaux
+# Vide, Herbes, Buissons_A, Buissons_B
+s = [150, 0, 35, 15] #note qu'à l'équilibre, on veut que seulement 20% des parcelles soient végétalisées... ça veut dire que les parcelles vides doivent rester stables et les transitions vers les parcelles végétalisées doivent être limitées  
+states = length(s)
+patches = sum(s)
+
+# Information pour le graphique
+states_names = ["Vide", "Herbes", "Buissons A", "Buissons B"]
+states_colors = [:grey40, :orange, :teal, :purple]
+
+# ## Matrice de transition
+T = zeros(Float64, states, states)
+T[1, :] = [360, 15, 15, 10] #transitions comme vide
+# ces valeurs vont devenir des probabilités plus tard, et donc on a choisi d'utiliser des gros chiffres pour assurer qu'à l'équilibre, seulement 20% des parcelles sont végétalisées
+# la somme de toutes les parcelles végétalisées est 40 (15+15+10)
+# parmi ces 20%, 30$ doivent être des parcelles herbes
+# 0.30 * 40 = 12 
+T[2, :] = [80, 280, 25, 15] #transition comme herbes
+# les parcelles herbes restent majoritairement herbes mais peuvent aussi changer 
+# parmi ces 20%, 70% sont des buissons (un type de buisson doit être plus abdondant que l'autre)
+# 0.70 * 40 = 28
+# on peut dire que il y a 18 parcelles de Buissons_A et 10 Buissons_B
+T[3, :] = [40, 15, 320, 25] #transition comme buisson_A 
+T[4, :] = [40, 15, 25, 320] #transition comme buisson_B
 
 
-    """
+#je pense qu'on peut enlever cette partie?? 
+"""
     foo(x, y)
 
 Cette fonction ne fait rien.
@@ -109,38 +150,7 @@ function foo(x, y)
     return nothing
 end
 
-# Les états du paysage:
-# Il y a 4 états: vide, herbes, buisson_A, buisson_B
-# Il y a 200 parcelles, toutes initiallement vides mais on peut planter jusqu'à 50 parcelles de buissons
-# on peut donc dire qu'on va planter 35 parcelles de buisson_A et 15 parcelles de buisson_B
-# alors il y a 150 vides, 0 herbes, 25 buissons_A et 15 buissons_B
-
-# États
-# Vide, Herbes, Buissons_A, buissons_B
-s = [150, 0, 35, 15] #note qu'à l'équilibre, on veut que seulement 20% des parcelles soient végétalisées... ça veut dire que les parcelles vides doivent rester stables et les transitions vers les parcelles végétalisées doivent être limitées  
-states = length(s)
-patches = sum(s)
-
-# création de la matrice de transition
-T = zeros(Float64, states, states)
-T[1, :] = [360, 15, 15, 10] #transitions par vide
-# ces valeurs vont devenir des probabilités plus tard, et donc on a choisi d'utiliser des gros chiffres pour assurer qu'à l'équilibre, seulement 20% des parcelles sont végétalisées
-# la somme de toutes les parcelles végétalisées est 40 (15+15+19)
-# parmi ces 20%, 30$ doivent être des parcelles herbes
-# 0.30 * 40 = 12 
-T[2, :] = [80, 280, 25, 15] #transition par herbes
-# les parcelles herbes restent majoritairement herbes mais peuvent aussi changer 
-# parmi ces 20%, 70% sont des buissons (un type de buisson doit être plus abdondant que l'autre)
-# 0.70 * 40 = 28
-# on peut dire que il y a 18 parcelles de Buissons_A et 10 Buissons_B
-T[3, :] = [40, 15, 320, 25] #transition par buisson_A 
-T[4, :] = [40, 15, 25, 320] #transition par buisson_B
-
-states_names = ["Vide", "Herbes", "Buissons A", "Buissons B"]
-states_colors = [:grey40, :orange, :teal, :purple]
-
-# Simulations
-
+# # Présentation des résultats
 f = Figure()
 ax = Axis(f[1, 1], xlabel="Nb. générations", ylabel="Nb. parcelles")
 #simulation stochastique
@@ -161,10 +171,8 @@ axislegend(ax)
 tightlimits!(ax)
 current_figure()
 
-# # Présentation des résultats
-
 # La figure suivante représente des valeurs aléatoires:
-
+# on peut enlever cette partie?
 hist(randn(100))
 
 # # Discussion
