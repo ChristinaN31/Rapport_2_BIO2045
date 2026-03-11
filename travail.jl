@@ -13,6 +13,11 @@
 # ---
 
 # # Introduction
+# hypothèse possible?? : Dans le contexte de l’aménagement d’un corridor sous une ligne électrique à haute tension, nous faisons l’hypothèse que l’introduction de deux espèces de buissons, 
+# combinée à une proportion limitée d’herbes et à une forte proportion de parcelles vides, permet d’établir une communauté végétale stable qui empêche l’installation d’arbres de grande taille 
+# tout en maintenant un certain niveau de biodiversité. Une telle structure végétale devrait donc permettre de concilier les contraintes de sécurité liées aux infrastructures électriques avec 
+# des objectifs écologiques de conservation de la biodiversité. (on veut limiter la présence d'arbres dans ce cas parce qu'ils peuvent atteindre une hauteur importante et leurs branches peuvent
+# entrer en contact avec les lignes électriques)
 
 # # Présentation du modèle
 # ## États du modèle:
@@ -176,6 +181,33 @@ hist(randn(100))
 
 # # Discussion
 
-# On peut aussi citer des références dans le document `references.bib`,
-# @ermentrout1993cellular -- la bibliographie sera ajoutée automatiquement à la
-# fin du document.
+
+# Les résultats de la simulation sont cohérents avec notre hypothèse initiale, qui était que l'introduction de deux espèces de buissons permettrait de créer une biodiversité végétale stable
+# sous la ligne électrique tout en limitant la croissance d'arbres et en maintenant une certaine biodiversité. En réalité, les corridors sous les lignes de transport d'électricité doivent être
+# maintenus libres de végétation haute afin d'éviter tout contact avec les infrastructures et de réduire les risques de panne ou d'incendie (clarke2008towardsecologicalmanagement). Toutefois, plusieurs études
+# ont montré que ces zones peuvent aussi servir d'habitats importants pour de nombreuses espèces lorsqu'elles sont gérées correctement (kimmel2024integratedvegetationmanagement). Une stratégie fréquemment utilisée
+# dans ces milieux est la gestion intégrée de la végétation (Integrated Vegetation Management), qui encourage la croissance de certaines plantes comme les herbes et les buissons, tout
+# en empêchant la croissance d'arbres qui peuvent interférer avec les lignes électriques. Dans la pratique, la croissance des arbres est généralement contrôlée avec l'utilisation d'herbicides
+# sélectifs ou le débroussaillage mécanique, qui permettent d'éliminer les espèces susceptibles de devenir trop grandes tout en laissant en place les plantes compatibles avec les contraintes du
+# corridor (kimmel2024integratedvegetationmanagement). 
+
+# Dans notre simulation, l'introduction d'une deuxième espèce de buisson permet de reproduire de ce type de type de végétation. La population initiale choisie est 
+# composée de 150 parcelles vides, 35 parcelles occupées par des buissons de type A et 15 parcelles occupées par des buissons de type B, pour un total de 200 parcelles. La matrice de 
+# transition a été ajustée afin de favoriser la persistance des parcelles vides tout en permettant une colonisation limitée par les herbes et les buissons. Cette configuration conduit 
+# le modèle vers un état d'équilibre d'environ 160 parcelles vides et 40 parcelles végétalisées. Parmi ces parcelles végétalisées, environ 30% sont occupées par des herbes et 70% par 
+# des buissons, ce qui respecte les contraintes imposées. De plus, la variété de buisson la moins abondante représente plus de 30% du total des buissons, satisfaisant ainsi la condition 
+# de diversité.  Les résultats montrent donc qu'à l'équilibre, la majorité des parcelles végétalisées est occupée par des buissons, tandis que les herbes demeurent présentes mais en proportion 
+# plus faible. Cette structure correspond bien aux stratégies de gestion utilisées dans les corridors de transport d'électricité, où la croissance des herbes et des buissons sont encouragés 
+# car ils offrent une couverture végétale relativement basse qui n'entre pas en contact avec les infrastructures. Les simulations stochastiques montrent que, malgré la variabilité associées 
+# aux transitions aléatoires entre états, les proportions de végétation se stablisent autour des valeurs prévues par le modèle déterministe. Cela suggère que la configuration choisie pour la 
+# population initiale et la matrice de transition produit un système relativement solide. En effet, même lorsque les transitions sont soumises à des fluctuations aléaotoires, la majorité des
+# trajectoires converge vers un équilibre similaire, indiquant que les critères de gestion peuvent être respectés dans plusieurs simulations. Par contre, le modèle déterministe représente
+# la tendance moyenne du système et permet de visualiser clairement l'état d'équilibre vers lequel les simulations stochastiques convergent (gustafsson2013whencan).   
+
+# Dans un contexte réel de gestion des corrdors électriques, ces résultats illustrent l'importance de choisir des espèces végétales dont les caractérsitiques écologiques favorisent la stabilité
+# de la communauté végétale tout en limitant la croissance des espèces qu'on veut éliminer. Une communauté composée par des buissons de petites taille peut donc être une solution efficace pour
+# assurer que les contraintes de sécurité des infrastructures, mais aussi les objectifs de conservation de biodiversité, sont respectés.
+
+
+
+
