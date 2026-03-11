@@ -54,7 +54,6 @@ end
 
 Cette fonction vérifie que les dimensions des arguments sont valides: la matrice de transition doit être carrée et le nombre d'états doit correspondre au nombre de lignes de la matrice
 """
-
 function check_function_arguments(transitions, states)
     if size(transitions, 1) != size(transitions, 2)
         throw("Le nombre d'états ne correspond pas à la matrice de transition")
@@ -125,18 +124,18 @@ states_colors = [:grey40, :orange, :teal, :purple]
 
 # ## Matrice de transition
 T = zeros(Float64, states, states)
-T[1, :] = [360, 15, 15, 10] #transitions comme vide
+T[1, :] = [375, 10, 9, 6] #transitions comme vide
 # ces valeurs vont devenir des probabilités plus tard, et donc on a choisi d'utiliser des gros chiffres pour assurer qu'à l'équilibre, seulement 20% des parcelles sont végétalisées
 # la somme de toutes les parcelles végétalisées est 40 (15+15+10)
 # parmi ces 20%, 30$ doivent être des parcelles herbes
 # 0.30 * 40 = 12 
-T[2, :] = [80, 280, 25, 15] #transition comme herbes
+T[2, :] = [120, 230, 35, 15] #transition comme herbes
 # les parcelles herbes restent majoritairement herbes mais peuvent aussi changer 
 # parmi ces 20%, 70% sont des buissons (un type de buisson doit être plus abdondant que l'autre)
 # 0.70 * 40 = 28
 # on peut dire que il y a 18 parcelles de Buissons_A et 10 Buissons_B
-T[3, :] = [40, 15, 320, 25] #transition comme buisson_A 
-T[4, :] = [40, 15, 25, 320] #transition comme buisson_B
+T[3, :] = [90, 15, 280, 15] #transition comme buisson_A 
+T[4, :] = [95, 15, 20, 270] #transition comme buisson_B
 
 
 #je pense qu'on peut enlever cette partie?? 
@@ -152,7 +151,7 @@ end
 
 # # Présentation des résultats
 f = Figure()
-ax = Axis(f[1, 1], xlabel="Nb. générations", ylabel="Nb. parcelles")
+ax = Axis(f[1, 1], xlabel="Nb. générations", ylabel="Nb. parcelles", yticks = 0:10:200)
 #simulation stochastique
 for _ in 1:100
     sto_sim = simulation(T, s; stochastic = true, generations = 200)
