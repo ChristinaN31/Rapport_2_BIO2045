@@ -269,10 +269,6 @@ current_figure()
 # diversité d’espèces végétales de petite taille peut être présente sous
 # les corridors électriques.
 
-'references.bib'
-@clarke2008towardsecologicalmanagement Clarke, R. H., & Johnson, M. S. (2008). Toward ecological management of power line corridors: A review of current practices and future directions. *Environmental Management*, 42(3), 345-358.
-@gustafsson2013whencan Gustafsson, L., & Jonsson, B. G. (2013). When can stochasticity be ignored in population models? *Ecology Letters*, 16(7), 877-888.
-@kimmel2024integratedvegetationmanagement Kimmel, K., & Smith, J. (2024). Integrated vegetation management for power line corridors: Balancing safety and biodiversity. *Journal of Environmental Management*, 300, 113456.
 
 
 
