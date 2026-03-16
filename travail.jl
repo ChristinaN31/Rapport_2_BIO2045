@@ -36,6 +36,7 @@ s = [150, 0, 35, 15] # rappel qu'à l'équilibre, seulement 20% des parcelles so
 import Random
 Random.seed!(123456)
 using CairoMakie
+import Distributions
 using Distributions
 
 # ## Vérifications des entrées du modèle
