@@ -88,8 +88,8 @@
 # ## Packages nécessaires :
 import Random
 Random.seed!(123456)
+import Distributions
 using CairoMakie
-using Distributions
 
 # ## Paramètres du modèle : 
 s = [150, 0, 35, 15] # soit 150 parcelles vides, 0 parcelles d'herbes, 35 parcelles de buissons de type A et 15 parcelles de buissons de type B, pour un total de 200 parcelles.
@@ -268,4 +268,9 @@ current_figure()
 # et buissons de type B), alors que, dans la réalité, une plus grande 
 # diversité d’espèces végétales de petite taille peut être présente sous
 # les corridors électriques.
+
+'references.bib'
+@clarke2008towardsecologicalmanagement Clarke, R. H., & Johnson, M. S. (2008). Toward ecological management of power line corridors: A review of current practices and future directions. *Environmental Management*, 42(3), 345-358.
+@gustafsson2013whencan Gustafsson, L., & Jonsson, B. G. (2013). When can stochasticity be ignored in population models? *Ecology Letters*, 16(7), 877-888.
+@kimmel2024integratedvegetationmanagement Kimmel, K., & Smith, J. (2024). Integrated vegetation management for power line corridors: Balancing safety and biodiversity. *Journal of Environmental Management*, 300, 113456.
 
