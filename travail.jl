@@ -96,7 +96,7 @@ s = [150, 0, 35, 15] # soit 150 parcelles vides, 0 parcelles d'herbes, 35 parcel
 states = length(s)
 patches = sum(s)
 generations = 200
-nb.parcelles = 200
+parcelles = 200
 
 # ## Information pour la visualisation du graphique :
 states_names = ["Vide", "Herbes", "Buissons A", "Buissons B"]
@@ -112,7 +112,6 @@ Cette fonction vérifie que chaque ligne de la matrice de transition somme à 1.
 function check_transition_matrix!(T)
     for ligne in axes(T, 1)
         if sum(T[ligne, :]) != 1
-            @warn "La somme de la ligne $(ligne) n'est pas égale à 1 et a été modifiée"
             T[ligne, :] ./= sum(T[ligne, :])
         end
     end
@@ -199,6 +198,7 @@ T[4, :] = [95, 15, 20, 270] #transition comme buisson_B
 # # Présentation des résultats
 f = Figure()
 ax = Axis(f[1, 1], xlabel="Nb. générations", ylabel="Nb. parcelles", yticks=0:10:200)
+
 # ## Simulation stochastique :
 for _ in 1:100
     sto_sim = simulation(T, s; stochastic=true, generations=200)
