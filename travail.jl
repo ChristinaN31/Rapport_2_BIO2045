@@ -7,7 +7,7 @@
 #      matricule: 20313890
 #      github: ChristinaN31
 #    - nom: Gomez Saucedo
-#      prenom: Carla Danahe
+#      prenom: Deuxième
 #      matricule: 20341379
 #      github: CarlaGomez1
 # ---
@@ -199,14 +199,14 @@ T[4, :] = [95, 15, 20, 270] #transition comme buisson_B
 # # Présentation des résultats
 f = Figure()
 ax = Axis(f[1, 1], xlabel="Nb. générations", ylabel="Nb. parcelles", yticks=0:10:200)
-# ## Simulation stochastique : soit aléatoire
+# ## Simulation stochastique :
 for _ in 1:100
     sto_sim = simulation(T, s; stochastic=true, generations=200)
     for i in eachindex(s)
         lines!(ax, sto_sim[i, :], color=states_colors[i], alpha=0.1)
     end
 end
-# ## Simulation déterministe : soit prévisible 
+# ## Simulation déterministe : 
 det_sim = simulation(T, s; stochastic=false, generations=200)
 for i in eachindex(s)
     lines!(ax, det_sim[i, :], color=states_colors[i], alpha=1,
@@ -268,10 +268,4 @@ current_figure()
 # et buissons de type B), alors que, dans la réalité, une plus grande 
 # diversité d’espèces végétales de petite taille peut être présente sous
 # les corridors électriques.
-
-
-
-
-
-
 
