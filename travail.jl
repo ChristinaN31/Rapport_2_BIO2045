@@ -88,6 +88,8 @@
 # ## Packages nécessaires :
 import Random
 Random.seed!(123456)
+using CairoMakie
+import Distributions
 using Distributions
 using CairoMakie
 
