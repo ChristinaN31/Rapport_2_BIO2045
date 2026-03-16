@@ -138,7 +138,7 @@ Cette fonction simule une transition stochastique entre les états en utilisant 
 """
 function _sim_stochastic!(timeseries, transitions, generation)
     for state in axes(timeseries, 1)
-        pop_change = rand(Multinomial(timeseries[state, generation], transitions[state, :]))
+        pop_change = rand(Distribution.Multinomial(timeseries[state, generation], transitions[state, :]))
         timeseries[:, generation+1] .+= pop_change
     end
 end
