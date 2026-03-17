@@ -1,6 +1,7 @@
 # ---
 # title: Simulation de la dynamique végétale sous un corridor électrique
 # repository: tpoisot/BIO245-modele
+# bibliography: references.bib 
 # auteurs:
 #    - nom: Nadler
 #      prenom: Christina
@@ -15,7 +16,7 @@
 # # Introduction
 # Les corridors sous les lignes électriques à haute tension présentent à 
 # la fois des enjeux écologiques et des contraintes de sécurité 
-# (clarke2008towardsecologicalmanagement). En effet, la croissance d'arbres et de
+# (@clarke2008towardsecologicalmanagement). En effet, la croissance d'arbres et de
 # végétation de grande taille peut interférer avec les infrastructures
 # électriques, augmentant ainsi les risques de pannes de courant,
 # d'incendies, ou encore d’endommagement du matériel. Il est donc
@@ -25,12 +26,12 @@
 # représentent une niche écologique importante pour certains animaux. 
 # C’est donc très important de préserver cette biodiversité tant animale 
 # que végétale afin d’éviter leur disparition et d’éviter de dégrader ces
-# milieux de façon irréversible (clarke2008towardsecologicalmanagement). On ne peut 
+# milieux de façon irréversible (@clarke2008towardsecologicalmanagement). On ne peut 
 # donc pas prendre en considération l’option de raser l’entièreté de la 
 # végétation. Une approche couramment utilisée pour approcher cette
 # problématique est la gestion intégrée de la végétation, qui vise à
 # favoriser la croissance de plantes de plus petite taille, comme des
-# herbes ou encore des buissons (kimmel2024integratedvegetationmanagement)
+# herbes ou encore des buissons (@kimmel2024integratedvegetationmanagement)
 # tout en limitant l’installation d’arbres susceptibles de devenir assez 
 # grands pour toucher les lignes électriques. Dans cette simulation, les 
 # arbres ou autre végétation pouvant interférer avec les lignes électriques ont été coupés, 
@@ -227,7 +228,7 @@ current_figure()
 # végétation basse comme des herbacées et des buissons. Cette structure
 # semble donc optimale afin de concilier les besoins écologiques et les 
 # contraintes de sécurité sous les corridors électriques 
-# (kimmel2024integratedvegetationmanagement).
+# (@kimmel2024integratedvegetationmanagement).
 
 # En effet, la population initiale choisie est composée de 150 parcelles 
 # vides, 35 parcelles occupées par des buissons de type A et 15 parcelles
@@ -253,7 +254,7 @@ current_figure()
 # gestion peuvent être respectés dans plusieurs simulations. Le modèle
 # déterministe, quant à lui, représente la tendance moyenne du système et
 # permet de visualiser clairement l'état d'équilibre vers lequel les
-# simulations stochastiques convergent (gustafsson2013whencan).
+# simulations stochastiques convergent (@gustafsson2013whencan).
 
 # Cependant, ce modèle comporte certaines limitations importantes. Tout 
 # d’abord, les parcelles sont considérées comme indépendantes les unes des
