@@ -270,5 +270,3 @@ current_figure()
 # diversité d’espèces végétales de petite taille peut être présente sous
 # les corridors électriques, ce qui pourrait influencer la dynamique de 
 # succession végétale.
-
-# # Bibliographie
