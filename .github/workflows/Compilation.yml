@@ -54,7 +54,7 @@ jobs:
                   name: Typst
                   path: travail.typ
             - name: "Move the figures to the docs folder"
-              run: cp travail-*.png docs
+              run: cp travail-*.png docs || true
               shell: bash
             - name: "Moves the PDF to the docs/ folder"
               run: mv travail.pdf docs/travail.pdf
