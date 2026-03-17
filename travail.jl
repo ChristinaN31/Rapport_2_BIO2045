@@ -268,7 +268,7 @@ current_figure()
 # et buissons de type B), alors que, dans la réalité, une plus grande 
 # diversité d’espèces végétales de petite taille peut être présente sous
 # les corridors électriques, ce qui pourrait influencer la dynamique de 
-# colonisation et de succession végétale.
+# succession végétale.
 
 # # Bibliographie
 @clarke2008towardsecologicalmanagement Clarke, R. H., & Johnson, M. S. (2008). Toward ecological management of power line corridors: A review of current practices and future directions. *Environmental Management*, 42(3), 345-358.
