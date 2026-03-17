@@ -1,5 +1,5 @@
 # ---
-# title: Titre du travail
+# title: Simulation de la dynamique végétale sous un corridor électrique
 # repository: tpoisot/BIO245-modele
 # auteurs:
 #    - nom: Nadler
