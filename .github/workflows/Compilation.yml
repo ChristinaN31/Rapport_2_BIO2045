@@ -13,7 +13,7 @@ jobs:
               with:
                   version: 1
             - name: "Instantiate project and add Literate"
-              run: julia -e 'import Pkg; Pkg.activate("."); Pkg.instantiate(); Pkg.add("Literate")'
+              run: julia -e 'import Pkg; Pkg.activate("."); Pkg.instantiate(); Pkg.add(["Literate", "Distributions", "CairoMakie"])'
               shell: bash
             - name: "Run the document and generate the .md script"
               run: julia --project .assets/build.jl
